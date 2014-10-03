@@ -236,7 +236,7 @@
    <property name="title">
     <string>提示/Information</string>
    </property>
-   <widget class="QTextEdit" name="test_Information">
+   <widget class="QTextEdit" name="text_Information">
     <property name="geometry">
      <rect>
       <x>0</x>

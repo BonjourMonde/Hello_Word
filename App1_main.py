@@ -56,54 +56,56 @@ class myApp(QWidget,Ui_Form):
         try:
             self.serialPort=serial.Serial(strPortInit,strBaudInit,timeout=2)
             self.serialPort.flushInput()
-            print("ok"+"@"+strBaudInit+"@"+strPortInit)
+            #print("ok"+"@"+strBaudInit+"@"+strPortInit)
             self.pushButton_Send.setStyleSheet(QString.fromUtf8("background-color:rgb(0,255,0);"))
             self.pushButton_Send.setText("Ready")
+            self.text_Information.append("Connection OK, set the PID values and click 'Ready' button to continue")
             self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(255,255,255);"))
             self.pushButton_Stop.setText(QString.fromUtf8("Stop"))
             self.pushButton_Init.setStyleSheet(QString.fromUtf8("background-color: rgb(255, 255, 255);")) 
             self.pushButton_Init.setText(QString.fromUtf8("Init"))
+            self.text_Information.append("Communication OK"+"@"+strPortInit+"@"+strBaudInit+"Baud rate")
             self.x = []
             self.s = []
             self.d = []
             self.c = []
         except Exception, connecting_Error:
-            print("Error initialisation/请连接Arduino")
+            self.text_Information.append("Initialisation Error, Check Arduino connection. If serial port not listed, input the Serial Port as shown in Arduino and retry")
             self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(255,100,0);"))
             self.pushButton_Stop.setText("Error")
 
 
     def pushButton_Stop_Clicked(self):
         self.timer_Plot.stop()
-
-        print("pushButton_Stop_Clicked")
+        #print("pushButton_Stop_Clicked")
 
         if self.serialPort:
-        	self.serialPort.close()
-        	self.timer_Serial.stop()
-        	self.pushButton_Send.setStyleSheet(QString.fromUtf8("background-color:rgb(255,255,255);"))
-        	self.pushButton_Send.setText(QString.fromUtf8("Start"))
-        	self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(0,0,255);"))
-        	self.pushButton_Stop.setText(QString.fromUtf8("Off"))
-        	self.pushButton_Init.setStyleSheet(QString.fromUtf8("background-color: rgb(255, 255, 255);")) 
-        	self.pushButton_Init.setText(QString.fromUtf8("Init"))
+            self.serialPort.close()
+            self.timer_Serial.stop()
+            self.pushButton_Send.setStyleSheet(QString.fromUtf8("background-color:rgb(255,255,255);"))
+            self.pushButton_Send.setText(QString.fromUtf8("Start"))
+            self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(0,0,255);"))
+            self.pushButton_Stop.setText(QString.fromUtf8("Off"))
+            self.pushButton_Init.setStyleSheet(QString.fromUtf8("background-color: rgb(255, 255, 255);")) 
+            self.pushButton_Init.setText(QString.fromUtf8("Init"))
+            self.text_Information.append("Communication stopped, try click 'Init' button to restart")
 
     def pushButton_Send_Clicked(self):
 
-    	print("pushButton_Send_Clicked")
+        print("pushButton_Send_Clicked")
         print(self.pushButton_Send.text())
-    	self.sP=self.horizontalSlider_sP.value()
-    	print(self.sP)
-    	self.sI=self.horizontalSlider_sI.value()
-    	print(self.sI)
-    	self.sD=self.horizontalSlider_sD.value()
-    	print(self.sD)
-    	self.cP=self.horizontalSlider_cP.value()
-    	print(self.cP)
-    	self.cI=self.horizontalSlider_cI.value()
-    	print(self.cI)
-    	self.cD=self.horizontalSlider_cD.value()
-    	print(self.cD)
+        self.sP=self.horizontalSlider_sP.value()
+        print(self.sP)
+        self.sI=self.horizontalSlider_sI.value()
+        print(self.sI)
+        self.sD=self.horizontalSlider_sD.value()
+        print(self.sD)
+        self.cP=self.horizontalSlider_cP.value()
+        print(self.cP)
+        self.cI=self.horizontalSlider_cI.value()
+        print(self.cI)
+        self.cD=self.horizontalSlider_cD.value()
+        print(self.cD)
         if self.pushButton_Send.text()=="Ready":
             self.serialPort.flushInput()
             self.pushButton_Send.setText(QString.fromUtf8("..."))
@@ -112,6 +114,7 @@ class myApp(QWidget,Ui_Form):
             self.curve_Speed=self.graph_Speed.plot(self.x,self.s, pen=(0,0,255)) 
             self.curve_Deplace=self.graph_Deplace.plot(self.x,self.d, pen=(255,0,0))
             self.curve_Current=self.graph_Current.plot(self.x,self.c, pen=(0,255,0))
+            self.text_Information.append("Plot in process")
 
 
     # def pushButton_Image_Clicked(self):

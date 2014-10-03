@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'app1.ui'
 #
-# Created: Fri Oct  3 11:34:00 2014
+# Created: Fri Oct  3 11:48:32 2014
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,9 +86,9 @@ class Ui_Form(object):
         self.groupBox_3 = QtGui.QGroupBox(Form)
         self.groupBox_3.setGeometry(QtCore.QRect(20, 480, 211, 119))
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
-        self.test_Information = QtGui.QTextEdit(self.groupBox_3)
-        self.test_Information.setGeometry(QtCore.QRect(0, 20, 211, 101))
-        self.test_Information.setObjectName(_fromUtf8("test_Information"))
+        self.text_Information = QtGui.QTextEdit(self.groupBox_3)
+        self.text_Information.setGeometry(QtCore.QRect(0, 20, 211, 101))
+        self.text_Information.setObjectName(_fromUtf8("text_Information"))
         self.label_9 = QtGui.QLabel(Form)
         self.label_9.setGeometry(QtCore.QRect(20, 600, 141, 16))
         self.label_9.setObjectName(_fromUtf8("label_9"))
