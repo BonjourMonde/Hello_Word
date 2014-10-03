@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'app1.ui'
 #
-# Created: Fri Oct  3 11:48:32 2014
+# Created: Fri Oct  3 14:41:02 2014
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -88,6 +88,11 @@ class Ui_Form(object):
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
         self.text_Information = QtGui.QTextEdit(self.groupBox_3)
         self.text_Information.setGeometry(QtCore.QRect(0, 20, 211, 101))
+        self.text_Information.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.BusyCursor))
+        self.text_Information.setAutoFillBackground(False)
+        self.text_Information.setStyleSheet(_fromUtf8("color: rgb(153, 102, 51);\n"
+"font: 14pt \"Courier\";"))
+        self.text_Information.setReadOnly(True)
         self.text_Information.setObjectName(_fromUtf8("text_Information"))
         self.label_9 = QtGui.QLabel(Form)
         self.label_9.setGeometry(QtCore.QRect(20, 600, 141, 16))

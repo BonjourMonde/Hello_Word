@@ -245,6 +245,19 @@
       <height>101</height>
      </rect>
     </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>BusyCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(153, 102, 51);
+font: 14pt &quot;Courier&quot;;</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QLabel" name="label_9">

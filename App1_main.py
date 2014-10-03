@@ -33,7 +33,7 @@ class myApp(QWidget,Ui_Form):
         # 3nd graph setting
         self.graph_Current.setBackgroundBrush(QBrush(QColor(Qt.white))) 
         self.graph_Current.getAxis('bottom').setLabel('Time', units='ms',**labelStyle)
-        self.graph_Current.getAxis('left').setLabel('Depalce', units='mm',**labelStyle)
+        self.graph_Current.getAxis('left').setLabel('Depalce', units='A',**labelStyle)
         self.graph_Current.showGrid(x=True,y=True)        
 
         self.timer_Serial=QTimer()
@@ -70,7 +70,7 @@ class myApp(QWidget,Ui_Form):
             self.d = []
             self.c = []
         except Exception, connecting_Error:
-            self.text_Information.append("Initialisation Error, Check Arduino connection. If serial port not listed, input the Serial Port as shown in Arduino and retry")
+            self.text_Information.append("Please check Arduino connection. If serial port not listed, input the Serial Port as shown in Arduino and retry"+"\n")
             self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(255,100,0);"))
             self.pushButton_Stop.setText("Error")
 
@@ -88,11 +88,11 @@ class myApp(QWidget,Ui_Form):
             self.pushButton_Stop.setText(QString.fromUtf8("Off"))
             self.pushButton_Init.setStyleSheet(QString.fromUtf8("background-color: rgb(255, 255, 255);")) 
             self.pushButton_Init.setText(QString.fromUtf8("Init"))
-            self.text_Information.append("Communication stopped, try click 'Init' button to restart")
+            self.text_Information.append("Communication stopped, try click 'Init' button to restart"+"\n")
 
     def pushButton_Send_Clicked(self):
 
-        print("pushButton_Send_Clicked")
+        #print("pushButton_Send_Clicked")
         print(self.pushButton_Send.text())
         self.sP=self.horizontalSlider_sP.value()
         print(self.sP)
@@ -114,7 +114,7 @@ class myApp(QWidget,Ui_Form):
             self.curve_Speed=self.graph_Speed.plot(self.x,self.s, pen=(0,0,255)) 
             self.curve_Deplace=self.graph_Deplace.plot(self.x,self.d, pen=(255,0,0))
             self.curve_Current=self.graph_Current.plot(self.x,self.c, pen=(0,255,0))
-            self.text_Information.append("Plot in process")
+            self.text_Information.append("Plot in process, click 'Stop' button to stop"+"\n")
 
 
     # def pushButton_Image_Clicked(self):
@@ -169,7 +169,7 @@ class myApp(QWidget,Ui_Form):
             new_S=value_S
             new_D=value_D
             new_C=value_C
-            self.points=np.append(self.points,[[self.compt,new_S,new_D]],axis=0)
+            self.points=np.append(self.points,[[self.compt,new_S,new_D,new_C]],axis=0)
             self.x=self.points[:,0] 
             self.s=self.points[:,1]
             self.d=self.points[:,2]
