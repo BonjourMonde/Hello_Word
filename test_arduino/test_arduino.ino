@@ -12,8 +12,8 @@ void loop(){
 mesure=analogRead(pin);
 Serial.print(mesure);
 Serial.print(" ");
-Serial.print(mesure)
-Serial.print(" ")
+Serial.print(mesure);
+Serial.print(" ");
 Serial.println(mesure);
 delay(100);
 
