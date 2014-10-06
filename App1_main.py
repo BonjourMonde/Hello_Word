@@ -104,6 +104,7 @@ class myApp(QWidget,Ui_Form):
         if self.serialPort:
             self.serialPort.close()
             self.timer_Serial.stop()
+            self.serialPort.write("-1")
             self.pushButton_Send.setStyleSheet(QString.fromUtf8("background-color:rgb(255,255,255);"))
             self.pushButton_Send.setText(QString.fromUtf8("Start"))
             self.pushButton_Stop.setStyleSheet(QString.fromUtf8("background-color:rgb(0,0,255);"))
@@ -118,6 +119,7 @@ class myApp(QWidget,Ui_Form):
         print(self.pushButton_Send.text())
         self.sP=self.horizontalSlider_sP.value()
         print(self.sP)
+
         self.sI=self.horizontalSlider_sI.value()
         print(self.sI)
         self.sD=self.horizontalSlider_sD.value()
@@ -128,12 +130,16 @@ class myApp(QWidget,Ui_Form):
         print(self.cI)
         self.cD=self.horizontalSlider_cD.value()
         print(self.cD)
+        self.serialPort.write()
         if self.pushButton_Send.text()=="Ready":
             self.serialPort.flushInput()
             self.pushButton_Send.setText(QString.fromUtf8("..."))
             self.timer_Serial.start(20)
             self.timer_Plot.start(20)
+            self.serialPort.write("1")
+            self.serialPort.write("sP"+self.sP+"sI"+self.sI+"sD"+self.sD+"cP"+self.cP+"cI"+self.cI+"cD"+self.cD)
             self.text_Information.append("Plot in process, click 'Stop' button to stop"+"\n")
+
 
 
     # def pushButton_Image_Clicked(self):
